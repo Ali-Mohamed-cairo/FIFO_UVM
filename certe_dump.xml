@@ -1,0 +1,130 @@
+<certe_dump>
+  <instance type=" FIFO_test "> 
+     uvm_test_top 
+  
+     <instance type=" FIFO_env "> 
+        env 
+  
+        <instance type=" FIFO_Cover_Class "> 
+           FIFO_Cover_env 
+  
+           <export if_type = "uvm_analysis_export" txn_type = "anonymous"> 
+              cov_export 
+              <connection>  uvm_test_top.env.FIFO_Cover_env.cov_fifo.analysis_export  </connection> 
+           </export> 
+  
+           <instance type=" uvm_tlm_analysis_fifo #(T) "> 
+              cov_fifo 
+  
+              <imp if_type = "uvm_analysis_imp" txn_type = "anonymous"> 
+                 analysis_export 
+              </imp> 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 get_ap 
+              </port> 
+  
+              <imp if_type = "uvm_get_peek_imp" txn_type = "anonymous"> 
+                 get_peek_export 
+              </imp> 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 put_ap 
+              </port> 
+  
+              <imp if_type = "uvm_put_imp" txn_type = "anonymous"> 
+                 put_export 
+              </imp> 
+           </instance> 
+  
+        </instance> 
+  
+  
+        <instance type=" FIFO_Score_Class "> 
+           FIFO_Score_env 
+  
+           <export if_type = "uvm_analysis_export" txn_type = "anonymous"> 
+              sb_export 
+              <connection>  uvm_test_top.env.FIFO_Score_env.sb_fifo.analysis_export  </connection> 
+           </export> 
+  
+           <instance type=" uvm_tlm_analysis_fifo #(T) "> 
+              sb_fifo 
+  
+              <imp if_type = "uvm_analysis_imp" txn_type = "anonymous"> 
+                 analysis_export 
+              </imp> 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 get_ap 
+              </port> 
+  
+              <imp if_type = "uvm_get_peek_imp" txn_type = "anonymous"> 
+                 get_peek_export 
+              </imp> 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 put_ap 
+              </port> 
+  
+              <imp if_type = "uvm_put_imp" txn_type = "anonymous"> 
+                 put_export 
+              </imp> 
+           </instance> 
+  
+        </instance> 
+  
+  
+        <instance type=" FIFO_Agent_Class "> 
+           FIFO_agent_env 
+  
+           <instance type=" FIFO_Seqr_Class "> 
+              FIFO_Seqr_agent 
+  
+              <export if_type = "uvm_analysis_export" txn_type = "anonymous"> 
+                 rsp_export 
+                 <connection>  uvm_test_top.env.FIFO_agent_env.FIFO_Seqr_agent.sqr_rsp_analysis_fifo.analysis_export  </connection> 
+              </export> 
+  
+              <imp if_type = "uvm_seq_item_pull_imp" txn_type = "anonymous"> 
+                 seq_item_export 
+              </imp> 
+           </instance> 
+  
+  
+           <instance type=" FIFO_driver "> 
+              FIFO_driver_agent 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 rsp_port 
+              </port> 
+  
+              <port if_type = "uvm_seq_item_pull_port" txn_type = "anonymous"> 
+                 seq_item_port 
+                 <connection>  uvm_test_top.env.FIFO_agent_env.FIFO_Seqr_agent.seq_item_export  </connection> 
+              </port> 
+           </instance> 
+  
+  
+           <instance type=" FIFO_Monitor_Class "> 
+              FIFO_monitor_agent 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 mon_ap 
+                 <connection>  uvm_test_top.env.FIFO_agent_env.agt_ap  </connection> 
+              </port> 
+           </instance> 
+  
+  
+           <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+              agt_ap 
+              <connection>  uvm_test_top.env.FIFO_Cover_env.cov_export  </connection> 
+              <connection>  uvm_test_top.env.FIFO_Score_env.sb_export  </connection> 
+           </port> 
+        </instance> 
+  
+     </instance> 
+  
+  </instance> 
+  
+  </certe_dump>
